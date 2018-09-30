@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="nickboyer">
 <meta property="og:description" content="概述通过 Erlang 的分布式特性（magic cookie 认证节点）进行 RabbitMQ 集群，各 RabbitMQ 服务为对等节点，即每个节点都提供服务给客户端连接，进行消息发送与接收。 这些节点通过 RabbitMQ HA 队列（镜像队列）进行消息队列结构复制。本文中搭建 3 个节点(172.30.1.12/172.30.1.13/172.30.1.14)，并且都是磁盘节点（所有节点状">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-30T03:39:14.413Z">
+<meta property="og:updated_time" content="2018-09-30T03:48:53.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RabbitMq集群安装">
 <meta name="twitter:description" content="概述通过 Erlang 的分布式特性（magic cookie 认证节点）进行 RabbitMQ 集群，各 RabbitMQ 服务为对等节点，即每个节点都提供服务给客户端连接，进行消息发送与接收。 这些节点通过 RabbitMQ HA 队列（镜像队列）进行消息队列结构复制。本文中搭建 3 个节点(172.30.1.12/172.30.1.13/172.30.1.14)，并且都是磁盘节点（所有节点状">
@@ -396,7 +396,7 @@
                 
               
 
-              <time title="创建时间：2018-09-30 09:56:00 / 修改时间：11:39:14" itemprop="dateCreated datePublished" datetime="2018-09-30T09:56:00+08:00">2018-09-30</time>
+              <time title="创建时间：2018-09-30 09:56:00 / 修改时间：11:48:53" itemprop="dateCreated datePublished" datetime="2018-09-30T09:56:00+08:00">2018-09-30</time>
             
 
             
@@ -459,6 +459,7 @@
 <li>RabbitMQ3.7.7</li>
 <li>Erlang21.0.3</li>
 </ul>
+<a id="more"></a>
 <h2 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h2><table>
 <thead>
 <tr>
@@ -504,7 +505,6 @@
 <h4 id="rabbitmq3"><a href="#rabbitmq3" class="headerlink" title="rabbitmq3"></a>rabbitmq3</h4><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cookie拷贝</span></span><br><span class="line">[root@rabbitmq2 setup]<span class="comment"># cd /var/lib/rabbitmq/</span></span><br><span class="line">[root@rabbitmq2 rabbitmq]<span class="comment"># scp root@172.30.1.12:/var/lib/rabbitmq/.erlang.cookie .erlang.cookie</span></span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">[root@rabbitmq2 rabbitmq]<span class="comment"># reboot</span></span><br><span class="line">[root@rabbitmq2 ~]<span class="comment"># rabbitmqctl stop_app</span></span><br><span class="line">Stopping rabbit application <span class="literal">on</span> node rabbit@rabbitmq2 ...</span><br><span class="line">[root@rabbitmq2 ~]<span class="comment"># rabbitmqctl join_cluster rabbit@rabbitmq1</span></span><br><span class="line">Clustering node rabbit@rabbitmq2 <span class="keyword">with</span> rabbit@rabbitmq1</span><br><span class="line">[root@rabbitmq2 ~]<span class="comment"># rabbitmqctl start_app</span></span><br><span class="line">[root@rabbitmq2 ~]<span class="comment"># rabbitmqctl cluster_status</span></span><br></pre></td></tr></table></figure>
 <h2 id="webUI管理界面"><a href="#webUI管理界面" class="headerlink" title="webUI管理界面"></a>webUI管理界面</h2><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 启用管理插件</span></span><br><span class="line">[root<span class="symbol">@rabbitmq1</span> setup]<span class="meta"># rabbitmq-plugins enable rabbitmq_management</span></span><br><span class="line"><span class="meta"># 创建用户(guest不允许远程访问)</span></span><br><span class="line">[root<span class="symbol">@rabbitmq1</span> setup]<span class="meta"># rabbitmqctl add_user ecas ecas</span></span><br><span class="line"><span class="meta"># 给nickboeyr赋予角色</span></span><br><span class="line">[root<span class="symbol">@rabbitmq1</span> setup]<span class="meta"># rabbitmqctl set_user_tags ecas administrator</span></span><br><span class="line"><span class="meta"># 创建虚拟机</span></span><br><span class="line">[root<span class="symbol">@rabbitmq1</span> setup]<span class="meta"># rabbitmqctl add_vhost ecas</span></span><br><span class="line"><span class="meta"># 授权</span></span><br><span class="line">[root<span class="symbol">@rabbitmq1</span> setup]<span class="meta"># rabbitmqctl set_permissions -p ecas ecas <span class="string">".*"</span> <span class="string">".*"</span> <span class="string">".*"</span></span></span><br></pre></td></tr></table></figure>
 <h2 id="HA配置"><a href="#HA配置" class="headerlink" title="HA配置"></a>HA配置</h2><figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># ecas虚拟机配置配置镜像队列</span></span><br><span class="line">[root@rabbitmq1 setup]<span class="meta"># rabbitmqctl set_policy -p 'ecas' --priority <span class="number">9</span> --apply-to all ecas-ha <span class="meta-string">"^"</span> '&#123;<span class="meta-string">"ha-mode"</span>:<span class="meta-string">"all"</span>,<span class="meta-string">"ha-sync-mode"</span>:<span class="meta-string">"automatic"</span>&#125;'</span></span><br></pre></td></tr></table></figure>
-
       
     </div>
 
@@ -538,10 +538,6 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/09/29/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
             
           </div>
 
@@ -621,7 +617,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
