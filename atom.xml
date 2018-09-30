@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-09-30T03:48:38.335Z</updated>
+  <updated>2018-09-30T09:11:44.681Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java连接oracle示例 -- 一个简单的Demo</title>
+    <link href="http://yoursite.com/2018/09/30/java%E8%BF%9E%E6%8E%A5oracle%E7%A4%BA%E4%BE%8B-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84Demo/"/>
+    <id>http://yoursite.com/2018/09/30/java连接oracle示例-一个简单的Demo/</id>
+    <published>2018-09-30T09:11:00.000Z</published>
+    <updated>2018-09-30T09:11:44.681Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;figure class=&quot;highlight processing&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+      <category term="demo" scheme="http://yoursite.com/tags/demo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>wsdl生成java类</title>
+    <link href="http://yoursite.com/2018/09/30/wsdl%E7%94%9F%E6%88%90java%E7%B1%BB/"/>
+    <id>http://yoursite.com/2018/09/30/wsdl生成java类/</id>
+    <published>2018-09-30T09:09:00.000Z</published>
+    <updated>2018-09-30T09:10:55.814Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;生成命令&quot;&gt;&lt;a href=&quot;#生成命令&quot; class=&quot;headerlink&quot; title=&quot;生成命令&quot;&gt;&lt;/a&gt;生成命令&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;wsimport -keep -verbose -s C:\Users\Administrator\Desktop\数仓\pstrwo C:\Users\Administrator\Desktop\数仓\PstrwoQuery.wsdl
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+      <category term="wsdl" scheme="http://yoursite.com/tags/wsdl/"/>
+    
+  </entry>
   
   <entry>
     <title>Nginx安装</title>
